@@ -8,11 +8,19 @@ simplistic modelling assumptions.
 
 ## How to use
 
-This is a Rust library, but comes with some [examples](./examples) that you can modify.
-See [Installing Rust](https://www.rust-lang.org/tools/install) to get set up.
+This is a Rust library, and can be added to your `Cargo.toml` with:
 
-With the repository checked out, you can run these examples with e.g.
-`cargo run --example simple` to get an annotated FASTA file with the simulation result.
+```toml
+[dependencies]
+obsim = { git = "https://github.com/cidm-ph/obsim" }
+```
+
+You do not necessarily need to be familiar with Rust to make use of this
+library as it comes with some [examples](./examples) that you can modify.
+See [Installing Rust](https://www.rust-lang.org/tools/install) to get set up.
+With the repository checked out, you can edit the configuration in the examples
+and then e.g. `cargo run --example simple > simulation.fa` to get an annotated
+FASTA file with the simulation result.
 
 ## Purpose
 
