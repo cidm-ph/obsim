@@ -30,6 +30,14 @@ jobs:
           components: rustfmt, rust-src
       - name: Build documentation
         run: cargo doc --workspace --no-deps
+      - name: Add redirect
+        run: |
+           cat << EOF > ./target/doc/index.html
+           <!DOCTYPE HTML>
+             <html>
+               <body onload="window.location = './obsim/'">
+                 <a href="./obsim/">obsim</a>
+           EOF
 
       - uses: actions/configure-pages@v2
       - uses: actions/upload-pages-artifact@v1

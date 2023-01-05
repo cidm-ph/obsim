@@ -15,7 +15,7 @@ This is a Rust library, and can be added to your `Cargo.toml` with:
 obsim = { git = "https://github.com/cidm-ph/obsim" }
 ```
 
-See the [development documentation](https://cidm-ph.github.io/obsim/).
+See the [development documentation](https://cidm-ph.github.io/obsim/obsim).
 
 You do not necessarily need to be familiar with Rust to make use of this
 library as it comes with some [examples](./examples) that you can modify.
