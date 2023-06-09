@@ -3,6 +3,8 @@ use crate::genome::Genome;
 use crate::{Count, Time};
 use std::io;
 
+const FASTA_N_COLS: usize = 70;
+
 /// A simulated outbreak containing a number of cases.
 #[derive(Debug)]
 pub struct Outbreak<G> {
@@ -49,20 +51,29 @@ impl<G: Genome> Outbreak<G> {
     pub fn write_fasta<W: io::Write>(&self, mut writer: W) -> io::Result<()> {
         let sources = self.outbreaks();
 
+        let mut sequence = Vec::<u8>::new();
         for (i, genome) in self.genome.iter().enumerate() {
             writeln!(
                 writer,
                 ">case{:06} day_infected={} day_reported={} outbreak={} parent={}",
                 i,
                 self.history[i].infected,
-                self.history[i].infected,
+                self.history[i]
+                    .reported
+                    .map(|x| x.to_string())
+                    .unwrap_or("".to_string()),
                 sources[i],
                 self.source[i]
                     .map(|x| format!("case{:06}", x))
                     .unwrap_or_else(String::new)
             )?;
-            genome.write_nucleotides(&mut writer)?;
-            writeln!(writer)?;
+
+            genome.write_nucleotides(&mut sequence)?;
+            for chunk in sequence.chunks(FASTA_N_COLS) {
+                writer.write_all(chunk)?;
+                writeln!(writer)?;
+            }
+            sequence.clear();
         }
         Ok(())
     }

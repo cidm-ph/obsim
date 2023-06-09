@@ -272,7 +272,7 @@ mod tests {
             bad_simulation_cap: 2000,
         };
         let mut rng = Xoshiro256PlusPlus::seed_from_u64(89324 as u64);
-        let genome = SimpleGenome::default();
+        let genome = SimpleGenome::<64>::default();
         let outbreaks = binned_outbreaks(genome, &dm, mutation_rate, &sim_cfg, &mut rng).unwrap();
 
         assert_eq!(

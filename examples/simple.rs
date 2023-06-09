@@ -25,7 +25,7 @@ fn main() -> Result<()> {
     // use this instead for reproducible simulation:
     // let mut rng = Xoshiro256PlusPlus::seed_from_u64(9948901_u64);
 
-    let genome = SimpleGenome::default();
+    let genome = SimpleGenome::<256>::default();
     let ob = simulate_outbreak(genome, &disease_model, mutation_rate, max_cases, &mut rng)?;
 
     let stdout = std::io::stdout();

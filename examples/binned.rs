@@ -32,7 +32,7 @@ fn main() -> Result<()> {
     // use this instead for reproducible simulation:
     // let rng = Xoshiro256PlusPlus::seed_from_u64(32189661_u64);
 
-    let genome = SimpleGenome::default();
+    let genome = SimpleGenome::<64>::default();
     let ob = binned_outbreaks(genome, &disease_model, mutation_rate, &binned_cfg, rng)?;
 
     let stdout = std::io::stdout();

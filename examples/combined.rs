@@ -27,8 +27,14 @@ fn main() -> Result<()> {
     // let mut rng = Xoshiro256PlusPlus::seed_from_u64(32189661_u64);
 
     // simulate an initial outbreak
-    let index1 = SimpleGenome::default();
-    let mut ob = simulate_outbreak(index1, &disease_model, mutation_rate, max_cases, &mut rng)?;
+    let index1 = SimpleGenome::<64>::default();
+    let mut ob = simulate_outbreak(
+        index1.clone(),
+        &disease_model,
+        mutation_rate,
+        max_cases,
+        &mut rng,
+    )?;
 
     // create a second outbreak from a new introduction of the disease 30 time steps later with 10
     // SNPs separating it from the original index genome

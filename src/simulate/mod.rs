@@ -140,7 +140,7 @@ mod tests {
             infectiousness: vec![0.34, 0.33, 0.33],
         };
         let mutation_rate = 2e-4 / 365.;
-        let genome = SimpleGenome::default();
+        let genome = SimpleGenome::<64>::default();
         let outbreak = simulate_outbreak(genome, &dm, mutation_rate, 100, &mut rng);
 
         assert!(outbreak.is_ok());

@@ -28,7 +28,7 @@
 //! // stop the simulation at the end of a time step where the case count exceeds 100
 //! let max_cases = 100;
 //!
-//! let genome = SimpleGenome::default();
+//! let genome = SimpleGenome::<64>::default();
 //! let ob = simulate_outbreak(genome, &disease_model, mutation_rate, max_cases, &mut rng);
 //! assert!(ob.is_ok());
 //!
@@ -60,7 +60,7 @@ pub mod simple {
     //! and can be configured to match details of a pathogen of interest.
 
     pub use crate::disease::simple::SimpleDisease;
-    pub use crate::genome::simple::{GenomeStorage, SimpleGenome, GENOME_LENGTH};
+    pub use crate::genome::simple::SimpleGenome;
 }
 
 pub use disease::covid;
